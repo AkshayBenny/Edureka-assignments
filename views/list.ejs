@@ -14,7 +14,9 @@
     <ul>
         <li>Apple</li>
         <li>Banana</li>
-        <li> <%= newItem %> </li>
+        <%  for (var i = 0; i < newItem.length; i++) { %>
+            <li> <%= newItem[i] %> </li>
+        <% } %> 
     </ul>
 
     <form method="post" action="/">
