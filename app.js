@@ -1,4 +1,5 @@
 const express = require("express");
+const date = require(__dirname + "/date.js");
 
 const app = express();
 
@@ -11,16 +12,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  var today = new Date();
-
-  var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "short",
-  };
-
-  var day = today.toLocaleDateString("en-US", options);
-
+  var day = date();
   res.render("list", { listTitle: day, newListItems: items });
 });
 
@@ -47,8 +39,8 @@ app.post("/work", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { listTitle: "About"})
-})
+  res.render("about", { listTitle: "About" });
+});
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
